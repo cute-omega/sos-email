@@ -1,0 +1,9 @@
+{
+  "name": "saveoursouls-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "nodemailer": "^6.9.11"
+  }
+}
