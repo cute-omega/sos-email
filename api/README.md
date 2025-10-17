@@ -5,8 +5,8 @@
 ```
 api/
   alert.js         # Vercel Serverless Function，处理邮件发送
-  package.json     # 依赖声明（nodemailer）
-.env.example       # 环境变量示例
+.env.example       # 环境变量示例（在仓库根）
+package.json       # 依赖声明（在仓库根）
 ```
 
 ## 2. 配置环境变量
@@ -22,9 +22,8 @@ api/
 ## 3. 本地开发
 
 ```sh
-cd api
 npm install
-# 推荐用 vercel dev 启动本地 serverless 环境
+# 推荐用 vercel dev 启动本地 serverless 环境（在仓库根运行）
 vercel dev
 ```
 

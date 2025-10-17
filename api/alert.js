@@ -1,7 +1,9 @@
 // Vercel Serverless Function: /api/alert.js
 // 用于通过 SMTP 发送邮件
 
+
 const nodemailer = require('nodemailer');
+const { authenticator } = require('otplib');
 
 module.exports = async (req, res) => {
     if (req.method !== 'POST') {
@@ -9,7 +11,18 @@ module.exports = async (req, res) => {
         return;
     }
 
-    const { to, subject, text, html } = req.body || {};
+    // TOTP 校验
+    const totpSecret = process.env.TOTP_SECRET;
+    const { token, to, subject, text, html } = req.body || {};
+    if (!totpSecret) {
+        res.status(500).json({ error: 'TOTP secret not configured' });
+        return;
+    }
+    if (!token || !authenticator.check(token, totpSecret)) {
+        res.status(401).json({ error: 'Invalid or missing TOTP token' });
+        return;
+    }
+
     if (!to || !subject || (!text && !html)) {
         res.status(400).json({ error: 'Missing required fields' });
         return;

@@ -1,0 +1,18 @@
+{
+  "name": "sos-email",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless email sender via SMTP on Vercel",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test:alert": "node scripts/test-alert.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "nodemailer": "^6.9.11",
+    "otplib": "^12.0.1"
+  }
+}
