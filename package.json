@@ -8,7 +8,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "test:alert": "node scripts/test-alert.js"
+    "test:alert": "node scripts/test-alert.js",
+    "gen:totp-secret": "node scripts/gen-totp-secret.js"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
